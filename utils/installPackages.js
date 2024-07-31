@@ -1,11 +1,19 @@
-/*
- * @Author: tuyongtao1
- * @Date: 2024-03-19 13:44:51
- * @LastEditors: tuyongtao1
- * @LastEditTime: 2024-03-21 14:08:20
- * @Description: 
- */
 const { execSync } = require('child_process');
+
+const vitePlugins = [ 
+    'vite-plugin-dynamic-import@1.5.0', 
+    'vite-plugin-env-compatible@1.1.1', 
+    'vite-plugin-node-polyfills@0.7.0',
+    '@originjs/vite-plugin-commonjs@1.0.3', 
+    '@originjs/vite-plugin-require-context@1.0.9', 
+    '@rollup/plugin-alias@5.1.0', 
+    'path-browserify@1.0.1',
+    'sass@1.26.8',
+]
+const vite = [
+    'vite-plugin-vue2@1.9.0',
+    'vite@2.9.18'
+]
 
 // 设置子进程的工作目录
 const options = {
@@ -13,12 +21,15 @@ const options = {
     stdio: 'inherit' // 直接继承父进程的输入输出，以便在控制台看到输出
 };
 
-
 function installPackage() {
     try {
         // 同步执行命令
-        execSync('npm i @originjs/vite-plugin-commonjs @originjs/vite-plugin-require-context @rollup/plugin-alias vite-plugin-node-polyfills vite-plugin-env-compatible vite-plugin-dynamic-import path-browserify sass@1.26 regex-parser ejs vite-plugin-vue2 vite@2 --save-dev', options);
-        console.log('包安装成功！');
+        const viteInstallCommand = `npm i ${vite.join(' ')} - D`
+        const pluginInstallCommand = `npm i ${vitePlugins.join(' ')} - D`
+        execSync(viteInstallCommand, options);
+        console.log('vite包安装成功！');
+        execSync(pluginInstallCommand, options);
+        console.log('vite 插件安装成功！');
     } catch (error) {
         console.error(`执行的错误: ${error}`);
     }

@@ -16,7 +16,7 @@ function copyViteConfig() {
     // 同步复制文件
     try {
         fs.copyFileSync(sourceFilePath, targetFilePath);
-        console.log('File copied successfully');
+        console.log('vite.config.js 复制成功');
     } catch (err) {
         console.error('Error occurred while copying the file:', err);
     }

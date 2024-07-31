@@ -16,8 +16,9 @@ function addStartScript() {
         packageObj.scripts.vite = `vite`
         const updatedPackageJson = JSON.stringify(packageObj, null, 2); // 使用2个空格进行缩进
         fs.writeFileSync('./package.json', updatedPackageJson, { encoding: 'utf-8' })
-
+        console.log('启动命令 添加成功');
     } catch (error) {
+        console.log(error)
         process.exit(1)
     }
 
