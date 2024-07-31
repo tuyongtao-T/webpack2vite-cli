@@ -1,6 +1,6 @@
 {
   "name": "webpack2vite-cli",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "一个本地开发时webpack转vite的脚手架",
   "bin": {
     "w2v": "bin/index.js"
@@ -11,13 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "@inquirer/prompts": "^1.2.3",
-    "cli-progress": "^3.12.0",
-    "fs-extra": "^11.2.0",
-    "inquirer": "^8.2.6",
-    "minimist": "^1.2.8"
+    "inquirer": "^6.5.2"
   },
-  "volta": {
-    "node": "14.21.3"
+  "engines": {
+    "node": ">= 10"
   }
 }
